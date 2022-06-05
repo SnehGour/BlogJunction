@@ -7,5 +7,6 @@ namespace Server.Data
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
         public DbSet<Categories> categories { get; set; }
+        public DbSet<Blog> blogs { get; set; }
     }
 }

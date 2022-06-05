@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Server.Data;
 
@@ -10,9 +11,10 @@ using Server.Data;
 namespace Server.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220605162022_AddBlogTable")]
+    partial class AddBlogTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -32,7 +34,7 @@ namespace Server.Migrations
                     b.Property<int>("Body")
                         .HasColumnType("int");
 
-                    b.Property<int>("Categories")
+                    b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
@@ -44,7 +46,7 @@ namespace Server.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Categories");
+                    b.HasIndex("CategoryId");
 
                     b.HasIndex("UserId");
 
@@ -93,7 +95,7 @@ namespace Server.Migrations
                 {
                     b.HasOne("Server.Models.Categories", "Category")
                         .WithMany()
-                        .HasForeignKey("Categories")
+                        .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

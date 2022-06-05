@@ -19,6 +19,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 // Register Repository pattens
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<IBlogRepository, BlogRepositroy>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
